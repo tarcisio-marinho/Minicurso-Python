@@ -8,7 +8,4 @@ direc.remove(".git")
 
 for f in direc:
     if(os.path.isdir(f)):
-        os.chdir(f)
-        print(os.getcwd())
-        os.system("rm -rf .git")
-        os.chdir(atual)
+        os.system("rm -rf " + f)
