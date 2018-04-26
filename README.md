@@ -2,7 +2,14 @@
 
 
 
+# SLIDES DE AULA
 
+arquivo: pythonzauros.pdf
+
+
+# BOT BITCOIN:
+
+arquivo: bot.py
 
 # Contato:
 
