@@ -1,14 +1,31 @@
-import urllib.request, json
+import urllib.request, json, time
 
-path = "https://api.blinktrade.com/api/v1/BRL/ticker"
+def request(path):
+    try:    
+        req = urllib.request.urlopen(path)
+    except:
+        return None
+        
+    texto = req.read()
 
-req = urllib.request.urlopen(path)
+    dicionario = json.loads(texto)    
 
-texto = req.read()
+    return dicionario
 
-dicionario = json.loads(texto)
-print(dicionario["high"])
 
+if __name__ == "__main__":
+    path = "https://api.blinktrade.com/api/v1/BRL/ticker"
+
+    precos = []
+    while(True):
+        dicionario = request(path)
+        if(dicionario):
+            precos.append(dicionario["high"])
+            print("Preço do bitcoin é: {}".format(dicionario["high"]))
+            time.sleep(2)
+        else:
+            print("Sem conexão com a internet. ")
+            exit(-1)
 
 
 
